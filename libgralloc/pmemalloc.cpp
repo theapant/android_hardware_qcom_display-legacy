@@ -314,10 +314,10 @@ int PmemKernelAlloc::alloc_buffer(alloc_data& data)
         return err;
     }
 
-    if (data.align == 8192) {
+    if (data.align == 4096) {
         // Tile format buffers need physical alignment to 8K
         // Default page size does not need this ioctl
-        err = alignPmem(fd, size, 8192);
+        err = alignPmem(fd, size, 4096);
         if (err < 0) {
             ALOGE("alignPmem failed");
         }
